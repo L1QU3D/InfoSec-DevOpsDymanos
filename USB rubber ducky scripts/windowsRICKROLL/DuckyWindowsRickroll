@@ -1,0 +1,14 @@
+DELAY 500
+GUI r
+DELAY 500
+STRING cmd
+DELAY 500
+ENTER
+DELAY 500
+STRING nbtstat -a [IP_ADDRESS]
+DELAY 500
+ENTER
+DELAY 500
+STRING start https://www.youtube.com/watch?v=dQw4w9WgXcQ
+DELAY 500
+ENTER
