@@ -64,6 +64,4 @@ USE THESE VERY POWERFUL AND FUN TOOLS RESPONSIBLY, you know, like alcohol! BE CO
 
 ```
 
-# Contributor
-- Palpatine @alvin-tosh 
-- Ronaldson Bellande @RonaldsonBellande
+BY L1QU3D
