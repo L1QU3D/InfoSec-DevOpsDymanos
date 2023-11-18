@@ -6,8 +6,12 @@ import pandas as pd
 import requests
 from bs4 import BeautifulSoup
 import matplotlib.pyplot as plt
+
 #create a URL get function 
 def getdata(url):
+    r = requests.get(url)
+    return r.text
+
     r = requests.get(url)
     return r.text
 #link for extracting html data
@@ -23,6 +27,8 @@ date = soup.select('h1')[0].text.strip()
 petrol_value = soup.find_all('div', id='graphic')
 
 # Loop through the html and find all text/string with div tag and id=’outsideLinks’.
+petrol_head = []  # Define the petrol_head list
+
 for country in country_name:
     # A bit of cleaning up
     cname = country.div.text.split('\n\n')
@@ -33,17 +39,14 @@ for country in country_name:
     # If there is an * next to a country than its data is updated weekly , and if there isn’t then it is updated once a month . 
     # Most of the countries without * have minimal fluctuation in their fuel prices. For the sake of analysis I’ve removed the “*” from the dataset
 
-petrol_value = soup.find_all('div', id='graphic'
-for price in petrol_value:
-    petrol_price = price.div.text.split()
+    # Read data from excel.
+    petrol_price = country.div.text.split()
     petrol_price.pop()
-    petrol_head = [float(i) for i in petrol_price]
-)
+    petrol_head.extend([float(i) for i in petrol_price])
 
-# Write the data to an excel .
-
-df = pd.DataFrame ({'Country': cname, 'Price': petrol_head}
-df.to_excel('check.xlsx', index= False))
+# Write the data to an excel.
+df = pd.DataFrame({'Country': cname, 'Price': petrol_head})
+df.to_excel('check.xlsx', index=False)
 
 # Read data from excel.
 
@@ -87,17 +90,17 @@ try:
     else:
         print(q + "'s " + f"gas price at {value}$ is{(round(((value-mu)/value)*100))}%  than world average price i.e.{mu}$")
         print("Review interactive normal distribution curve to find where your country lies  ")
-    #condition to find where are value (i.e. gas price) lies in the normal distribution
-	if value < o_std and value > mu:
-        print(f'{q} is paying close to what 68% of the world is paying. ')
-    if value < mu and value >nv_mu_80 :
-        print(f'{q} is paying close to what 68% of the world is paying. ')
-    elif value < nv_mu_80 and value > nv_mu_95 :
-        print(f'{q} is paying less than what the 80% of the world is paying. ')
+    # condition to find where the value (i.e. gas price) lies in the normal distribution
+    if value < mu and value > nv_mu_80:
+        print(f'{q} is paying close to what 68% of the world is paying.')
+    elif value < nv_mu_80 and value > nv_mu_95:
+        print(f'{q} is paying less than what the 80% of the world is paying.')
     elif value < nv_mu_95:
-        print(f'{q} is paying less than what the 95% of the world is paying. ')
+        print(f'{q} is paying less than what the 95% of the world is paying.')
     elif value > o_std and value > mu and value < t_std:
-        print(f'{q} is paying more than what the 80% of the world is paying. ')
+        print(f'{q} is paying more than what the 80% of the world is paying.')
+    elif value > t_std and value > mu:
+        print(f'{q} is paying more than what the 95% of the world is paying.')
     elif value > t_std and value > mu:
         print(f'{q} is paying more than what the 95% of the world is paying. ')
 except IndexError:
