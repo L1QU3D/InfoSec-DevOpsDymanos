@@ -9,3 +9,4 @@ sudo apt-get install firmware-atheros
 ```
 
 [ath9k_htc](https://wiki.debian.org/ath9k_htc)
+look at the tool 
