@@ -37,3 +37,5 @@ This script is written in python3 and can be used to perform a DoS(Denial of Ser
 
 ### Step 6: 
     Click '3' or (ctrl + c) to quit else it will keep on sending packets 😅
+
+### Happy SecDynamos
