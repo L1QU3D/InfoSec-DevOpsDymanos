@@ -125,7 +125,7 @@ def ip_lookup(ip_address):
     Returns:
         [dictionary]: [it has IP address information that the function cracked]
     """
-    # taking reader object
+    # taking reader object CLUDED
     reader_obj = geolite2.reader()
     # reading ip address information
     response = reader_obj.get(ip_address)
