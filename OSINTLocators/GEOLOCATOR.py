@@ -11,6 +11,8 @@ import urllib
 import gzip
 import os
 try:
+    import pip
+    pip.main(['install', '-q', 'pygeoip'])
     import pygeoip
 except ImportError:
     print ('Failed to Import pygeoip')
