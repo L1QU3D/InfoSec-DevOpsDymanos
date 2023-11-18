@@ -1,4 +1,7 @@
 #importing libraries
+import pip
+
+pip.main(['install', 'python-geoip-geolite2'])
 from geolite2 import geolite2
 from termcolor import colored
 from prettytable import PrettyTable
@@ -6,6 +9,7 @@ import requests
 import geocoder
 import folium
 import os
+
 
 # MAP_SOURCE_CODE
 CSS_CODE = """
