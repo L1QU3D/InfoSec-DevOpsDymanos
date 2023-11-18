@@ -5,7 +5,7 @@
 ## Keylogger Functionalities : 🚀
 
 - Keylogging
-- Can Save the keylogs and Screenshots in a file (you can change the local of file to wherever you want)
+- Can Save the keylogs and Screenshots in a file (you can change the local of file to wherever you want) go with your taste
 - Can print the keylogs after given interval of time (in the case 15 mins, you can change the time interval)
 - Can mail you all the keylogs and screenshot after given interval of time (in the case 15 mins, you can change the time interval).
 
