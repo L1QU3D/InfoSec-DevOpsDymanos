@@ -1,10 +1,10 @@
 #!/usr/bin/python
 # encoding: UTF-8
 
-__author__ = "maldevel"
-__credits__ = ["maldevel"]
+__author__ = "L1QU3D"
+__credits__ = ["fredricksaruni"]
 __license__ = "GPLv3"
-__maintainer__ = "maldevel"
+__maintainer__ = "L1QU3D"
 
 #######################################################################################################
 
@@ -18,9 +18,9 @@ from argparse import RawTextHelpFormatter
 #######################################################################################################
 
 message = """
-Parse Docker-Bench-Security Script JSON files | @maldevel
-Version: {}
-""".format(__version__)
+Parse Docker-Bench-Security Script JSON files | @L1QU3D
+Version: 1.0
+"""
 
 def MainFunc():
     parser = argparse.ArgumentParser(description=message, formatter_class=RawTextHelpFormatter)
@@ -57,7 +57,7 @@ def MainFunc():
 	                    default=None,
 	                    help='Output directory path')
 
-    if len(sys.argv) is 1:
+    if len(sys.argv) == 1:
         parser.print_help()
         sys.exit(1)
 
