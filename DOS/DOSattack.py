@@ -10,14 +10,14 @@ path=os.path.join(path,'lib')
 sys.path.append(path)
 import colorama
 from colorama import Fore,Back
-from tqdm.auto import tqdm
+import tqdm
 de_version="1.1"
 colorama.init()
 #platform info
 uname=system()
 if uname=="Windows":
 	cmd='cls'
-else :
+else:
 	cmd='clear'
 os.system(cmd)
 ##############

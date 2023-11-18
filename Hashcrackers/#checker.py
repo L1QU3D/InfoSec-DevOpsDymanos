@@ -529,7 +529,7 @@ def WhirlpoolHMAC(hash):
         jerar.append("122080")
 
 
-print(logo)
+
 try:
     first = str(argv[1])
 except:
