@@ -1,3 +1,4 @@
+import os
 import argon2
 
 # When a user creates a new account
