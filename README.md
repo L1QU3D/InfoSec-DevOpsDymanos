@@ -29,14 +29,12 @@ Introduction😄
       - GITHUB ( Maldevel, threat9, John Hammond...etc), 
       - HACKERONE, 
       - BUGCROWD, 
-      - YOUTUBE, 
+      
       - CTFs...etc
       
       * If you have any dope new scripts you use/Or a shoutout let me know as well/ Contribute; I am always looking for new scripts 😁
 
-      - For more instroctions into docker usage, check out the organization to get a better understanding on how to use the image
-      - docker pull ghcr.io/algorithm-model-research/infosec-and-hacking-scripts:main
-      - docker pull ghcr.io/ronaldsonbellande/infosec-and-hacking-scripts:main
+     
 
 <img src="3105anoncover.gif" height="500" width="1750" >
 
